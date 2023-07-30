@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import axios from "axios";
 import navLogo from "../img/gallery.png";
-import { FaSearch, FaBackspace, FaRedo } from "react-icons/fa";
+import { FaSearch, FaBackspace, FaRandom } from "react-icons/fa";
 import { hover } from "./Animations";
 import Searched from "./Searched";
 import Random from "./Random";
@@ -68,6 +68,7 @@ const MyNav = () => {
       }
     };
     randomFetchImages();
+    setInputValue("");
   };
   return (
     <StyledMyNav>
@@ -113,7 +114,7 @@ const MyNav = () => {
                 variants={hover}
                 whileHover="whileHover"
               >
-                <FaRedo size={30} />
+                <FaRandom size={30} />
               </StyledLiIcon>
             </StyledLi>
           </StyledNavRight>
