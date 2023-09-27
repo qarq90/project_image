@@ -1,140 +1,157 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import {motion} from "framer-motion";
 import axios from "axios";
+import "../styles/global.css";
 import navLogo from "../img/gallery.png";
-import { FaSearch, FaBackspace, FaRandom } from "react-icons/fa";
-import { hover } from "./Animations";
+import {FaSearch, FaBackspace, FaRandom, FaSun, FaMoon} from "react-icons/fa";
+import {hover} from "./Animations";
 import Searched from "./Searched";
 import Random from "./Random";
 
 const MyNav = () => {
-  const [title, setTitle] = useState(false);
-  const [imgs, setImgs] = useState([]);
-  const [inputValue, setInputValue] = useState("");
+        const [theme, setTheme] = useState(true);
+        const [title, setTitle] = useState(false);
+        const [imgs, setImgs] = useState([]);
+        const [inputValue, setInputValue] = useState("");
 
-  const handleInputChange = (event) => {
-    setTitle(true);
-    setInputValue(event.target.value);
-  };
+        const handleInputChange = (event) => {
+            setTitle(true);
+            setInputValue(event.target.value);
+        };
 
-  const clearHandler = () => {
-    setTitle(false);
-    setInputValue("");
-  };
-  const fetchHandler = () => {
-    const fetchImages = async () => {
-      try {
-        const response = await axios.get(
-          `https://api.unsplash.com/search/photos?page=1&query=${inputValue}&client_id=${process.env.REACT_APP_API_KEY}`,
+        const themeHandler = () => {
+            setTheme(!theme);
+        }
+
+        const clearHandler = () => {
+            setTitle(false);
+            setInputValue("");
+        };
+        const fetchHandler = () => {
+            const fetchImages = async () => {
+                try {
+                    const response = await axios.get(
+                        `https://api.unsplash.com/search/photos?page=1&query=${inputValue}&client_id=${process.env.REACT_APP_API_KEY}`,
+                    );
+                    console.log(response.data);
+                    const top10Imgs = response.data.results.slice(0, 10);
+                    setImgs(top10Imgs);
+                } catch (error) {
+                    console.error("Error fetching images:", error);
+                }
+            };
+            fetchImages();
+        };
+
+        useEffect(() => {
+            const randomImages = async () => {
+                try {
+                    const response = await axios.get(
+                        `https://api.unsplash.com/photos/random?count=10&client_id=${process.env["REACT_APP_API_KEY"]}`,
+                    );
+                    console.log(response.data);
+                    const top10Imgs = response.data;
+                    setImgs(top10Imgs);
+                } catch (error) {
+                    console.error("Error fetching random images:", error);
+                }
+            };
+            randomImages();
+        }, []);
+
+        const randomFetchHandler = () => {
+            const randomFetchImages = async () => {
+                try {
+                    const response = await axios.get(
+                        `https://api.unsplash.com/photos/random?count=10&client_id=${process.env["REACT_APP_API_KEY"]}`,
+                    );
+                    console.log(response.data);
+                    const top10Imgs = response.data;
+                    setImgs(top10Imgs);
+                } catch (error) {
+                    console.error("Error fetching random images:", error);
+                }
+            };
+            randomFetchImages();
+            setInputValue("");
+        };
+        return (
+            <StyledMyNav className={theme ? "darkMode" : "lighMode"}>
+                <StyledNav>
+                    <StyledUl>
+                        <StyledNavLeft>
+                            <StyledLi>
+                                <StyledImg src={navLogo} alt=""/>
+                            </StyledLi>
+                            <StyledLi>
+                                <StyledTitle>Image-Innator</StyledTitle>
+                            </StyledLi>
+                        </StyledNavLeft>
+                        <StyledNavRight>
+                            <StyledLi>
+                                <StyledInput className={theme ? "darkMode" : "lighMode"}
+                                             value={inputValue}
+                                             onChange={handleInputChange}
+                                             placeholder="Type here..."
+                                />
+                            </StyledLi>
+                            <StyledIconDiv>
+                                <StyledLi>
+                                    <StyledLiIcon
+                                        onClick={fetchHandler}
+                                        variants={hover}
+                                        whileHover="whileHover"
+                                    >
+                                        <FaSearch size={30}/>
+                                    </StyledLiIcon>
+                                </StyledLi>
+                                <StyledLi>
+                                    <StyledLiIcon
+                                        onClick={clearHandler}
+                                        variants={hover}
+                                        whileHover="whileHover"
+                                    >
+                                        <FaBackspace size={30}/>
+                                    </StyledLiIcon>
+                                </StyledLi>
+                                <StyledLi>
+                                    <StyledLiIcon
+                                        onClick={randomFetchHandler}
+                                        variants={hover}
+                                        whileHover="whileHover"
+                                    >
+                                        <FaRandom size={30}/>
+                                    </StyledLiIcon>
+                                </StyledLi>
+                                <StyledLi>
+                                    <StyledLiIcon
+                                        onClick={themeHandler}
+                                        variants={hover}
+                                        whileHover="whileHover"
+                                    >
+                                        {theme ? <FaMoon size={30}/> : <FaSun size={30}/>}
+                                    </StyledLiIcon>
+                                </StyledLi>
+                            </StyledIconDiv>
+                        </StyledNavRight>
+                    </StyledUl>
+                </StyledNav>
+                {title ? (
+                    <Searched inputValue={inputValue} imgs={imgs}/>
+                ) : (
+                    <Random random={imgs}/>
+                )}
+            </StyledMyNav>
         );
-        console.log(response.data);
-        const top10Imgs = response.data.results.slice(0, 10);
-        setImgs(top10Imgs);
-      } catch (error) {
-        console.error("Error fetching images:", error);
-      }
-    };
-    fetchImages();
-  };
-
-  useEffect(() => {
-    const randomImages = async () => {
-      try {
-        const response = await axios.get(
-          `https://api.unsplash.com/photos/random?count=10&client_id=${process.env["REACT_APP_API_KEY"]}`,
-        );
-        console.log(response.data);
-        const top10Imgs = response.data;
-        setImgs(top10Imgs);
-      } catch (error) {
-        console.error("Error fetching random images:", error);
-      }
-    };
-    randomImages();
-  }, []);
-
-  const randomFetchHandler = () => {
-    const randomFetchImages = async () => {
-      try {
-        const response = await axios.get(
-          `https://api.unsplash.com/photos/random?count=10&client_id=${process.env["REACT_APP_API_KEY"]}`,
-        );
-        console.log(response.data);
-        const top10Imgs = response.data;
-        setImgs(top10Imgs);
-      } catch (error) {
-        console.error("Error fetching random images:", error);
-      }
-    };
-    randomFetchImages();
-    setInputValue("");
-  };
-  return (
-    <StyledMyNav>
-      <StyledNav>
-        <StyledUl>
-          <StyledNavLeft>
-            <StyledLi>
-              <StyledImg src={navLogo} alt="" />
-            </StyledLi>
-            <StyledLi>
-              <StyledTitle>Image-Innator</StyledTitle>
-            </StyledLi>
-          </StyledNavLeft>
-          <StyledNavRight>
-            <StyledLi>
-              <StyledInput
-                value={inputValue}
-                onChange={handleInputChange}
-                placeholder="Type here..."
-              />
-            </StyledLi>
-            <StyledLi>
-              <StyledLiIcon
-                onClick={fetchHandler}
-                variants={hover}
-                whileHover="whileHover"
-              >
-                <FaSearch size={30} />
-              </StyledLiIcon>
-            </StyledLi>
-            <StyledLi>
-              <StyledLiIcon
-                onClick={clearHandler}
-                variants={hover}
-                whileHover="whileHover"
-              >
-                <FaBackspace size={30} />
-              </StyledLiIcon>
-            </StyledLi>
-            <StyledLi>
-              <StyledLiIcon
-                onClick={randomFetchHandler}
-                variants={hover}
-                whileHover="whileHover"
-              >
-                <FaRandom size={30} />
-              </StyledLiIcon>
-            </StyledLi>
-          </StyledNavRight>
-        </StyledUl>
-      </StyledNav>
-      {title ? (
-        <Searched inputValue={inputValue} imgs={imgs} />
-      ) : (
-        <Random random={imgs} />
-      )}
-    </StyledMyNav>
-  );
-};
+    }
+;
 
 const StyledMyNav = styled.div`
   width: 100%;
   position: sticky;
   top: 0;
   color: #a67b5b;
-  background-color: #f8f8ff;
   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
   }
 `;
@@ -188,6 +205,16 @@ const StyledNavRight = styled.div`
   }
 `;
 
+const StyledIconDiv = styled.div`
+  display: flex;
+  width: 95%;
+  padding: 0;
+  margin: 0;
+  @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    margin-left: -3rem;
+  }
+`;
+
 const StyledLiIcon = styled(motion.div)`
   display: flex;
   justify-content: center;
@@ -199,6 +226,10 @@ const StyledLiIcon = styled(motion.div)`
     cursor: pointer;
   }
   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    margin: 0.35rem;
+    padding: 0.75rem;
+    width: 60%;
+    height: 60%;
   }
 `;
 
@@ -218,12 +249,15 @@ const StyledInput = styled.input`
   color: #a67b5b;
   font-weight: normal;
   border-radius: 10px;
+
   &:hover {
     cursor: pointer;
   }
+
   &:focus {
     outline: none;
   }
+
   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
     width: 95%;
     text-align: center;

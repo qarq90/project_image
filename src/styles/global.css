@@ -4,7 +4,7 @@
 }
 
 body{
-    background: ghostwhite;
+    background: #222222;
     width: 100%;
     height: auto;
 }
@@ -17,4 +17,12 @@ body{
 
 .hide{
     display: none;
+}
+
+.darkMode {
+    background-color: #222222;
+}
+
+.lighMode {
+    background-color: #fff;
 }
