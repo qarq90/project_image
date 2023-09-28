@@ -211,7 +211,7 @@ const StyledIconDiv = styled.div`
   padding: 0;
   margin: 0;
   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    margin-left: -3rem;
+    margin-left: -8%;
   }
 `;
 

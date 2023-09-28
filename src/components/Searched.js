@@ -47,7 +47,7 @@ const StyledGrid = styled(motion.div)`
   grid-template-columns: 1fr 1fr;
   text-align: center;
   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    margin-top: 20rem;
+    margin-top: 65%;
   }
 `;
 
