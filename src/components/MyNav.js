@@ -30,7 +30,7 @@ const MyNav = () => {
         };
         const handleKeyDown = (event) => {
             if (event.key === "Enter") {
-                fetchHandler(); 
+                fetchHandler();
             }
         };
         const fetchHandler = () => {
@@ -82,7 +82,7 @@ const MyNav = () => {
             setInputValue("");
         };
         return (
-            <StyledMyNav className={theme ? "darkMode" : "lighMode"}>
+            <StyledMyNav className={theme ? "darkMode" : "lightMode"}>
                 <StyledNav>
                     <StyledUl>
                         <StyledNavLeft>
@@ -95,7 +95,7 @@ const MyNav = () => {
                         </StyledNavLeft>
                         <StyledNavRight>
                             <StyledLi>
-                                <StyledInput className={theme ? "darkMode" : "lighMode"}
+                                <StyledInput className={theme ? "darkMode" : "lightMode"}
                                              value={inputValue}
                                              onChange={handleInputChange}
                                              onKeyDown={handleKeyDown}
