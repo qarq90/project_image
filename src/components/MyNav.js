@@ -28,6 +28,11 @@ const MyNav = () => {
             setTitle(false);
             setInputValue("");
         };
+        const handleKeyDown = (event) => {
+            if (event.key === "Enter") {
+                fetchHandler(); 
+            }
+        };
         const fetchHandler = () => {
             const fetchImages = async () => {
                 try {
@@ -93,6 +98,7 @@ const MyNav = () => {
                                 <StyledInput className={theme ? "darkMode" : "lighMode"}
                                              value={inputValue}
                                              onChange={handleInputChange}
+                                             onKeyDown={handleKeyDown}
                                              placeholder="Type here..."
                                 />
                             </StyledLi>
@@ -222,9 +228,11 @@ const StyledLiIcon = styled(motion.div)`
   border: 2px solid #a67b5b;
   border-radius: 10px;
   padding: 0.5rem;
+
   &:hover {
     cursor: pointer;
   }
+
   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
     margin: 0.35rem;
     padding: 0.75rem;
