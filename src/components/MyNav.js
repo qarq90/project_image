@@ -40,7 +40,7 @@ const MyNav = () => {
                         `https://api.unsplash.com/search/photos?page=1&query=${inputValue}&client_id=${process.env.REACT_APP_API_KEY}`,
                     );
                     console.log(response.data);
-                    const top10Imgs = response.data.results.slice(0, 10);
+                    const top10Imgs = response.data.results;
                     setImgs(top10Imgs);
                 } catch (error) {
                     console.error("Error fetching images:", error);
@@ -53,7 +53,7 @@ const MyNav = () => {
             const randomImages = async () => {
                 try {
                     const response = await axios.get(
-                        `https://api.unsplash.com/photos/random?count=10&client_id=${process.env["REACT_APP_API_KEY"]}`,
+                        `https://api.unsplash.com/photos/random?count=24&client_id=${process.env["REACT_APP_API_KEY"]}`,
                     );
                     console.log(response.data);
                     const top10Imgs = response.data;
@@ -69,7 +69,7 @@ const MyNav = () => {
             const randomFetchImages = async () => {
                 try {
                     const response = await axios.get(
-                        `https://api.unsplash.com/photos/random?count=10&client_id=${process.env["REACT_APP_API_KEY"]}`,
+                        `https://api.unsplash.com/photos/random?count=24&client_id=${process.env["REACT_APP_API_KEY"]}`,
                     );
                     console.log(response.data);
                     const top10Imgs = response.data;
