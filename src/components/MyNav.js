@@ -4,7 +4,7 @@ import {motion} from "framer-motion";
 import axios from "axios";
 import "../styles/global.css";
 import navLogo from "../img/gallery.png";
-import {FaSearch, FaBackspace, FaRandom, FaSun, FaMoon} from "react-icons/fa";
+import {FaBackspace, FaMoon, FaRandom, FaSearch, FaSun} from "react-icons/fa";
 import {hover} from "./Animations";
 import Searched from "./Searched";
 import Random from "./Random";
@@ -28,59 +28,52 @@ const MyNav = () => {
             setTitle(false);
             setInputValue("");
         };
+
         const handleKeyDown = (event) => {
             if (event.key === "Enter") {
                 fetchHandler();
             }
         };
+
+        const fetchImages = async () => {
+            try {
+                const response = await axios.get(
+                    `https://api.unsplash.com/search/photos?per_page=60&query=${inputValue}&client_id=${process.env.REACT_APP_API_KEY}`,
+                );
+                console.log(response.data);
+                const top10Imgs = response.data.results;
+                setImgs(top10Imgs);
+            } catch (error) {
+                console.error("Error fetching images:", error);
+            }
+        };
+
         const fetchHandler = () => {
-            const fetchImages = async () => {
-                try {
-                    const response = await axios.get(
-                        `https://api.unsplash.com/search/photos?page=1&query=${inputValue}&client_id=${process.env.REACT_APP_API_KEY}`,
-                    );
-                    console.log(response.data);
-                    const top10Imgs = response.data.results;
-                    setImgs(top10Imgs);
-                } catch (error) {
-                    console.error("Error fetching images:", error);
-                }
-            };
             fetchImages();
         };
 
-        useEffect(() => {
-            const randomImages = async () => {
-                try {
-                    const response = await axios.get(
-                        `https://api.unsplash.com/photos/random?count=24&client_id=${process.env["REACT_APP_API_KEY"]}`,
-                    );
-                    console.log(response.data);
-                    const top10Imgs = response.data;
-                    setImgs(top10Imgs);
-                } catch (error) {
-                    console.error("Error fetching random images:", error);
-                }
-            };
-            randomImages();
-        }, []);
+        const randomFetchImages = async () => {
+            try {
+                const response = await axios.get(
+                    `https://api.unsplash.com/photos/random?count=24&client_id=${process.env["REACT_APP_API_KEY"]}`,
+                );
+                console.log(response.data);
+                const top10Imgs = response.data;
+                setImgs(top10Imgs);
+            } catch (error) {
+                console.error("Error fetching random images:", error);
+            }
+        };
 
         const randomFetchHandler = () => {
-            const randomFetchImages = async () => {
-                try {
-                    const response = await axios.get(
-                        `https://api.unsplash.com/photos/random?count=24&client_id=${process.env["REACT_APP_API_KEY"]}`,
-                    );
-                    console.log(response.data);
-                    const top10Imgs = response.data;
-                    setImgs(top10Imgs);
-                } catch (error) {
-                    console.error("Error fetching random images:", error);
-                }
-            };
             randomFetchImages();
             setInputValue("");
         };
+
+        useEffect(() => {
+            randomFetchImages();
+        }, []);
+
         return (
             <StyledMyNav className={theme ? "darkMode" : "lightMode"}>
                 <StyledNav>

@@ -2,14 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import {motion} from "framer-motion";
 import {scaleUp} from "./Animations";
+import {handleDownload} from "../lib/helper";
 
 const Searched = ({random}) => {
-    const downloadHandler = (value) => {
-        window.open(value, "_blank");
-    };
-    const downloadImageHandler = (link) => {
-        window.open(link, "_blank")
-    }
     return (
         <StyledSearched>
             <StyledGrid initial="hidden" animate="animate">
@@ -17,11 +12,10 @@ const Searched = ({random}) => {
                     <StyledMapDiv variants={scaleUp} key={item.id}>
                         <StyledImg
                             variants={scaleUp}
-                            onClick={() => downloadHandler(item.links.download)}
                             src={item.urls.regular}
                             alt=""
                         />
-                        <Button onClick={() => downloadImageHandler(item.links.download)}>Download</Button>
+                        <Button onClick={() => handleDownload(item.urls.full, item.slug)}>Download</Button>
                     </StyledMapDiv>
                 ))}
             </StyledGrid>
@@ -71,6 +65,7 @@ const Button = styled.button`
   border: none;
   background-color: #a67b5b;
   font-size: 1rem;
+  font-family: sans-serif;
   color: black;
   cursor: pointer;
   transition: 0.5s all ease;
