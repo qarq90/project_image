@@ -26,8 +26,7 @@ export const StyledUl = styled.ul`
   letter-spacing: 5px;
   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
     flex-direction: column;
-    margin-left: 1rem;
-    width: 90%;
+    width: 100%;
   }
 `;
 

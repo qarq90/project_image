@@ -1,21 +1,21 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-body{
+body {
     background: #222222;
     width: 100%;
     height: auto;
 }
 
-.show{
+.show {
     display: contents;
     padding: 1rem;
     text-align: center;
 }
 
-.hide{
+.hide {
     display: none;
 }
 
@@ -24,13 +24,15 @@ body{
 }
 
 .lightMode {
-    background-color: #fff;
+    background-color: #f1f1f1;
 }
 
-#dropdown-options{
-    background-color: #a67b5b;
-    >*{
+.lightButton {
+    background-color: #444444;
+    color: #fff;
+}
 
-        background-color: #a67b5b;
-    }
+.darkButton {
+    background-color: #a67b5b;
+    color: #000000;
 }

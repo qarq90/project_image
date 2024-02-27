@@ -20,11 +20,6 @@ const StyledImg = styled(motion.img)`
   border-radius: 10px;
   transition: 0.5s all ease;
 
-  &:hover {
-    cursor: pointer;
-    scale: 0.95;
-  }
-
   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
     width: 100%;
     height: 69%;

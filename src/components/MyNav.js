@@ -148,9 +148,9 @@ const MyNav = () => {
                     </StyledUl>
                 </StyledNav>
                 {title ? (
-                    <Searched inputValue={inputValue} imgs={imgs}/>
+                    <Searched inputValue={inputValue} imgs={imgs} theme={theme}/>
                 ) : (
-                    <Random random={imgs}/>
+                    <Random random={imgs} theme={theme}/>
                 )}
             </StyledMyNav>
         );
