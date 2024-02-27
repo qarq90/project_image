@@ -27,5 +27,6 @@ const StyledImg = styled(motion.img)`
 
   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
     width: 100%;
+    height: 69%;
   }
 `;
