@@ -99,11 +99,13 @@ const MyNav = () => {
                         </StyledNavLeft>
                         <StyledNavRight>
                             <StyledLi>
-                                <StyledInput className={theme ? "darkMode" : "lightMode"}
-                                             value={inputValue}
-                                             onChange={handleInputChange}
-                                             onKeyDown={handleKeyDown}
-                                             placeholder="Type here..."
+                                <StyledInput
+                                    id="search"
+                                    className={theme ? "darkMode" : "lightMode"}
+                                    value={inputValue}
+                                    onChange={handleInputChange}
+                                    onKeyDown={handleKeyDown}
+                                    placeholder="Type here..."
                                 />
                             </StyledLi>
                             <StyledIconDiv>

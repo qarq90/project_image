@@ -21,10 +21,26 @@ body {
 
 .darkMode {
     background-color: #222222;
+    transition: 0.5s all ease;
+}
+
+.darkMode #search {
+    &:focus {
+        background-color: #a67b5b;
+        color: #000;
+    }
+}
+
+.lightMode #search {
+    &:focus {
+        background-color: #a67b5b;
+        color: #fff;
+    }
 }
 
 .lightMode {
     background-color: #f1f1f1;
+    transition: 0.5s all ease;
 }
 
 .lightButton {

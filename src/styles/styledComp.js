@@ -64,7 +64,7 @@ export const StyledIconDiv = styled.div`
   padding: 0;
   margin: 0;
   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    margin-left: -8%;
+    justify-content: center;
   }
 `;
 
@@ -81,10 +81,12 @@ export const StyledLiIcon = styled(motion.div)`
   }
 
   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    margin: 0.35rem;
-    padding: 0.75rem;
-    width: 60%;
-    height: 60%;
+    > svg {
+      margin: 0.005rem;
+      padding: 0.35rem;
+      width: 50%;
+      height: 50%;
+    }
   }
 `;
 
