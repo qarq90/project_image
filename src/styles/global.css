@@ -26,3 +26,11 @@ body{
 .lightMode {
     background-color: #fff;
 }
+
+#dropdown-options{
+    background-color: #a67b5b;
+    >*{
+
+        background-color: #a67b5b;
+    }
+}
