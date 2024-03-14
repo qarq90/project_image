@@ -4,12 +4,12 @@ import {DownloadButton} from "./Button";
 import {Image} from "./Image";
 import {StyledGrid, StyledMapDiv, StyledSearched} from "../styles/styledComp";
 
-const Searched = ({imgs, inputValue}) => {
+const Searched = ({imgs, theme}) => {
     return (<StyledSearched>
         <StyledGrid initial="hidden" animate="animate">
-            {imgs.map((item) => (<StyledMapDiv variants={scaleUp} key={item.id}>
-                <Image img={item.urls.regular}/>
-                <DownloadButton name={item.slug} url={item.urls.full}/>
+            {imgs.map((img) => (<StyledMapDiv variants={scaleUp} key={img.id}>
+                <Image img={img.urls.regular}/>
+                <DownloadButton name={img.slug} url={img.urls} theme={theme}/>
             </StyledMapDiv>))}
         </StyledGrid>
     </StyledSearched>);

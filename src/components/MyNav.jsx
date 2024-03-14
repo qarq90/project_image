@@ -51,7 +51,8 @@ const MyNav = () => {
                 const response = await axios.get(
                     `https://api.unsplash.com/search/photos?per_page=60&query=${inputValue}&client_id=${process.env.REACT_APP_API_KEY}`,
                 );
-                console.log(response.data);
+                setImgs([]);
+                console.log(response.data.results);
                 const top10Imgs = response.data.results;
                 setImgs(top10Imgs);
             } catch (error) {
@@ -150,7 +151,7 @@ const MyNav = () => {
                     </StyledUl>
                 </StyledNav>
                 {title ? (
-                    <Searched inputValue={inputValue} imgs={imgs} theme={theme}/>
+                    <Searched imgs={imgs} theme={theme}/>
                 ) : (
                     <Random random={imgs} theme={theme}/>
                 )}
