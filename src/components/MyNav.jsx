@@ -4,8 +4,8 @@ import "../styles/global.css";
 import navLogo from "../img/gallery.png";
 import {FaBackspace, FaMoon, FaRandom, FaSearch, FaSun} from "react-icons/fa";
 import {hover} from "./Animations";
-import Searched from "./Searched";
-import Random from "./Random";
+import {Searched} from "./Searched";
+import {Randoms} from "./Randoms";
 import {
     StyledIconDiv,
     StyledImg,
@@ -23,7 +23,7 @@ import {
 const MyNav = () => {
         const [theme, setTheme] = useState(true);
         const [title, setTitle] = useState(false);
-        const [imgs, setImgs] = useState([]);
+        const [images, setImages] = useState([]);
         const [inputValue, setInputValue] = useState("");
 
         const handleInputChange = (event) => {
@@ -51,10 +51,10 @@ const MyNav = () => {
                 const response = await axios.get(
                     `https://api.unsplash.com/search/photos?per_page=60&query=${inputValue}&client_id=${process.env.REACT_APP_API_KEY}`,
                 );
-                setImgs([]);
+                setImages([]);
                 console.log(response.data.results);
                 const top10Imgs = response.data.results;
-                setImgs(top10Imgs);
+                setImages(top10Imgs);
             } catch (error) {
                 console.error("Error fetching images:", error);
             }
@@ -71,7 +71,7 @@ const MyNav = () => {
                 );
                 console.log(response.data);
                 const top10Imgs = response.data;
-                setImgs(top10Imgs);
+                setImages(top10Imgs);
             } catch (error) {
                 console.error("Error fetching random images:", error);
             }
@@ -151,9 +151,9 @@ const MyNav = () => {
                     </StyledUl>
                 </StyledNav>
                 {title ? (
-                    <Searched imgs={imgs} theme={theme}/>
+                    <Searched images={images} theme={theme}/>
                 ) : (
-                    <Random random={imgs} theme={theme}/>
+                    <Randoms images={images} theme={theme}/>
                 )}
             </StyledMyNav>
         );

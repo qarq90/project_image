@@ -4,7 +4,7 @@ import { DownloadButton } from "./Button";
 import { Image } from "./Image";
 import { StyledGrid, StyledMapDiv, StyledSearched } from "../styles/styledComp";
 
-export const Searched = ({ images, theme }) => {
+export const Randoms = ({ images, theme }) => {
     return (
         <StyledSearched>
             <StyledGrid variants={scaleUp} initial="hidden" animate="animate">

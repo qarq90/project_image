@@ -1,13 +1,11 @@
 import styled from "styled-components";
 import {motion} from "framer-motion";
-import {scaleUp} from "./Animations";
 import React from "react";
 
 
 export const Image = ({img}) => {
     return (
         <StyledImg
-            variants={scaleUp}
             src={img}
             alt=""
         />

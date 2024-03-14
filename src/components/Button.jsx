@@ -26,11 +26,11 @@ export const DownloadButton = ({name, url, theme}) => {
                 className={`${theme ? "darkButton" : "lightButton"}`}
                 onChange={(e) => setSelectedResolution(imageResolutions.find(resolution => resolution.name === e.target.value))}
                 name="resolution">
-                <option>Full HD</option>
-                <option>Raw</option>
-                <option>Regular</option>
-                <option>Small</option>
-                <option>Thumb</option>
+                <StyledOption>Full HD</StyledOption>
+                <StyledOption>Raw</StyledOption>
+                <StyledOption>Regular</StyledOption>
+                <StyledOption>Small</StyledOption>
+                <StyledOption>Thumb</StyledOption>
             </StyledSelect>
             <StyledButton
                 className={`${theme ? "darkButton" : "lightButton"}`}
@@ -76,3 +76,5 @@ const StyledButton = styled.a`
     cursor: pointer;
   }
 `;
+
+const StyledOption = styled.option``

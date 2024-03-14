@@ -127,7 +127,7 @@ export const StyledGrid = styled(motion.div)`
   gap: 1rem;
   text-align: center;
   @media screen and (min-device-width: 481px) {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
     margin-top: 65%;
