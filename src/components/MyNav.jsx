@@ -49,7 +49,7 @@ const MyNav = () => {
         const fetchImages = async () => {
             try {
                 const response = await axios.get(
-                    `https://api.unsplash.com/search/photos?per_page=60&query=${inputValue}&client_id=${process.env.REACT_APP_API_KEY}`,
+                    `https://api.unsplash.com/search/photos?query=${inputValue}&client_id=${process.env.REACT_APP_API_KEY}`,
                 );
                 setImages([]);
                 console.log(response.data.results);
@@ -67,7 +67,7 @@ const MyNav = () => {
         const randomFetchImages = async () => {
             try {
                 const response = await axios.get(
-                    `https://api.unsplash.com/photos/random?count=24&client_id=${process.env["REACT_APP_API_KEY"]}`,
+                    `https://api.unsplash.com/photos/random?count=30&client_id=${process.env["REACT_APP_API_KEY"]}`,
                 );
                 console.log(response.data);
                 const top10Imgs = response.data;

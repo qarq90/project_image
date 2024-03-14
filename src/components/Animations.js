@@ -10,15 +10,15 @@ export const hover = {
 
 export const scaleUp = {
     hidden: {
-        x: -100,
-        opacity: 0,
+        // x: -100,
+        // opacity: 0,
     },
     animate: {
-        x: 0,
-        opacity: 1,
-        transition: {
-            duration: 0.25,
-            staggerChildren: 1,
-        },
+        // x: 0,
+        // opacity: 1,
+        // transition: {
+        //     duration: 0.25,
+        //     staggerChildren: 1,
+        // },
     },
 };
