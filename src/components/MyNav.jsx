@@ -47,13 +47,20 @@ const MyNav = () => {
         };
 
         const fetchImages = async () => {
+            const clientID = "LOfhmCf0mt15DeFZ-22fw3zvfuoTr833GKJHCO5BmZ8";
             try {
-                const response = await axios.get(
-                    `https://api.unsplash.com/search/photos?query=${inputValue}&client_id=${process.env.REACT_APP_API_KEY}`,
-                );
-                setImages([]);
-                console.log(response.data.results);
-                const top10Imgs = response.data.results;
+                let top10Imgs = [];
+
+                for (let i = 0; i < 9; i++) {
+                    const response = await axios.get(
+                        `https://api.unsplash.com/search/photos?query=${inputValue}$per_page=${i}&client_id=${clientID}`
+                    );
+                    console.log(response.data.results);
+                    top10Imgs.push(...response.data.results);
+                }
+
+                console.log(top10Imgs);
+
                 setImages(top10Imgs);
             } catch (error) {
                 console.error("Error fetching images:", error);
@@ -65,16 +72,21 @@ const MyNav = () => {
         };
 
         const randomFetchImages = async () => {
+            const clientID = "LOfhmCf0mt15DeFZ-22fw3zvfuoTr833GKJHCO5BmZ8";
+            const images = [];
             try {
-                const response = await axios.get(
-                    `https://api.unsplash.com/photos/random?count=30&client_id=${process.env["REACT_APP_API_KEY"]}`,
-                );
-                console.log(response.data);
-                const top10Imgs = response.data;
-                setImages(top10Imgs);
+                for (let i = 0; i < 10; i++) {
+                    const response = await axios.get(
+                        `https://api.unsplash.com/photos/random?count=9&client_id=${clientID}`
+                    );
+                    console.log(response.data);
+                    images.push(...response.data);
+                }
+                setImages(images);
             } catch (error) {
                 console.error("Error fetching random images:", error);
             }
+
         };
 
         const randomFetchHandler = () => {
