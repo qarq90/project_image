@@ -47,21 +47,22 @@ const MyNav = () => {
         };
 
         const fetchImages = async () => {
+            let pageCount = 0;
             const clientID = "LOfhmCf0mt15DeFZ-22fw3zvfuoTr833GKJHCO5BmZ8";
             try {
-                let top10Imgs = [];
+                let currentImages = [];
 
-                for (let i = 0; i < 9; i++) {
-                    const response = await axios.get(
-                        `https://api.unsplash.com/search/photos?query=${inputValue}$per_page=${i}&client_id=${clientID}`
-                    );
-                    console.log(response.data.results);
-                    top10Imgs.push(...response.data.results);
-                }
+                const response = await axios.get(
+                    `https://api.unsplash.com/search/photos?query=${inputValue}&per_page=9&client_id=${clientID}`
+                );
+                pageCount++;
 
-                console.log(top10Imgs);
+                console.log(response.data.results);
+                currentImages.push(...response.data.results);
 
-                setImages(top10Imgs);
+                console.log(currentImages);
+
+                setImages(currentImages);
             } catch (error) {
                 console.error("Error fetching images:", error);
             }
@@ -73,16 +74,15 @@ const MyNav = () => {
 
         const randomFetchImages = async () => {
             const clientID = "LOfhmCf0mt15DeFZ-22fw3zvfuoTr833GKJHCO5BmZ8";
-            const images = [];
+            const currentImages = [];
+            let pageCount = 0;
             try {
-                for (let i = 0; i < 10; i++) {
-                    const response = await axios.get(
-                        `https://api.unsplash.com/photos/random?count=9&client_id=${clientID}`
-                    );
-                    console.log(response.data);
-                    images.push(...response.data);
-                }
-                setImages(images);
+                const response = await axios.get(
+                    `https://api.unsplash.com/photos/random?count=9&per_page=9&client_id=${clientID}`
+                );
+                console.log(response.data);
+                currentImages.push(...response.data);
+                setImages(currentImages);
             } catch (error) {
                 console.error("Error fetching random images:", error);
             }
