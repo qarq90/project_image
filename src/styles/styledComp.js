@@ -141,3 +141,64 @@ export const StyledMapDiv = styled(motion.div)`
 `;
 
 export const StyledSearched = styled.div``;
+
+export const StyledBottom = styled.div`
+    margin: 1rem;
+    width: 98%;
+    display: flex;
+    align-items: center;
+`;
+
+export const StyledBottomButton = styled.a`
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem;
+    margin-bottom: 0.75rem;
+    border-radius: 5px;
+    border: none;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.5s all ease;
+
+    &:hover {
+        border: 1px solid black;
+        scale: 0.95;
+        cursor: pointer;
+    }
+`;
+
+export const StyledSelect = styled.select`
+  margin-top: 1rem;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  font-family: sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.5s all ease;
+
+  &:hover {
+    border: 1px solid black;
+    cursor: pointer;
+  }
+
+`;
+
+export const StyledButton = styled.a`
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  font-family: sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.5s all ease;
+
+  &:hover {
+    border: 1px solid black;
+    scale: 0.95;
+    cursor: pointer;
+  }
+`;

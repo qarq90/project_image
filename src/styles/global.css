@@ -4,6 +4,7 @@
 }
 
 body {
+    overflow-x: hidden;
     background: #222222;
     width: 100%;
     height: auto;

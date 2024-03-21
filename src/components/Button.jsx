@@ -1,6 +1,7 @@
 import {handleDownload} from "../lib/helper";
 import React, {useState} from "react";
 import styled from "styled-components";
+import {StyledButton, StyledSelect} from "../styles/styledComp";
 
 
 export const DownloadButton = ({name, url, theme}) => {
@@ -41,40 +42,5 @@ export const DownloadButton = ({name, url, theme}) => {
         </>
     )
 }
-
-const StyledSelect = styled.select`
-  margin-top: 1rem;
-  text-align: center;
-  padding: 0.5rem;
-  border-radius: 5px;
-  border: none;
-  font-family: sans-serif;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: 0.5s all ease;
-
-  &:hover {
-    border: 1px solid black;
-    cursor: pointer;
-  }
-
-`;
-
-const StyledButton = styled.a`
-  margin-top: 1rem;
-  padding: 0.5rem;
-  border-radius: 5px;
-  border: none;
-  font-family: sans-serif;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: 0.5s all ease;
-
-  &:hover {
-    border: 1px solid black;
-    scale: 0.95;
-    cursor: pointer;
-  }
-`;
 
 const StyledOption = styled.option``

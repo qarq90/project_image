@@ -7,7 +7,7 @@ import { StyledGrid, StyledMapDiv, StyledSearched } from "../styles/styledComp";
 export const Randoms = ({ images, theme }) => {
     return (
         <StyledSearched>
-            <StyledGrid variants={scaleUp} initial="hidden" animate="animate">
+            <StyledGrid variants={scaleUp} initial="initial" animate="show">
                 {images.map((image) => (
                     <StyledMapDiv variants={scaleUp} key={image.id}>
                         <Image img={image.urls.regular} />

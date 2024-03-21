@@ -1,17 +1,17 @@
 import React from "react";
-import { scaleUp } from "./Animations";
-import { DownloadButton } from "./Button";
-import { Image } from "./Image";
-import { StyledGrid, StyledMapDiv, StyledSearched } from "../styles/styledComp";
+import {scaleUp} from "./Animations";
+import {DownloadButton} from "./Button";
+import {Image} from "./Image";
+import {StyledGrid, StyledMapDiv, StyledSearched} from "../styles/styledComp";
 
-export const Searched = ({ images, theme }) => {
+export const Searched = ({images, theme}) => {
     return (
         <StyledSearched>
-            <StyledGrid variants={scaleUp} initial="hidden" animate="animate">
+            <StyledGrid variants={scaleUp} initial="initial" animate="show">
                 {images.map((image) => (
                     <StyledMapDiv variants={scaleUp} key={image.id}>
-                        <Image img={image.urls.regular} />
-                        <DownloadButton name={image.slug} url={image.urls} theme={theme} />
+                        <Image img={image.urls.regular}/>
+                        <DownloadButton name={image.slug} url={image.urls} theme={theme}/>
                     </StyledMapDiv>
                 ))}
             </StyledGrid>

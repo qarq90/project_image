@@ -7,6 +7,8 @@ import {hover} from "./Animations";
 import {Searched} from "./Searched";
 import {Randoms} from "./Randoms";
 import {
+    StyledBottom,
+    StyledBottomButton,
     StyledIconDiv,
     StyledImg,
     StyledInput,
@@ -74,19 +76,17 @@ const MyNav = () => {
 
         const randomFetchImages = async () => {
             const clientID = "LOfhmCf0mt15DeFZ-22fw3zvfuoTr833GKJHCO5BmZ8";
-            const currentImages = [];
-            let pageCount = 0;
+            let pageCount = 1;
             try {
                 const response = await axios.get(
-                    `https://api.unsplash.com/photos/random?count=9&per_page=9&client_id=${clientID}`
+                    `https://api.unsplash.com/photos/random?count=9&page=${pageCount}&client_id=${clientID}`
                 );
+                pageCount++;
                 console.log(response.data);
-                currentImages.push(...response.data);
-                setImages(currentImages);
+                setImages(prevImages => [...prevImages, ...response.data]);
             } catch (error) {
                 console.error("Error fetching random images:", error);
             }
-
         };
 
         const randomFetchHandler = () => {
@@ -167,6 +167,14 @@ const MyNav = () => {
                 ) : (
                     <Randoms images={images} theme={theme}/>
                 )}
+                <StyledBottom>
+                    <StyledBottomButton
+                        className={`${theme ? "darkButton" : "lightButton"}`}
+                        onClick={randomFetchHandler}
+                    >
+                        Load More
+                    </StyledBottomButton>
+                </StyledBottom>
             </StyledMyNav>
         );
     }
