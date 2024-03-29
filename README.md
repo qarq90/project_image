@@ -5,14 +5,14 @@
    photographers worldwide
 - Uses Unplash API.
 - Repo: https://github.com/SpectreScythe/image-innator
-  
-
-![image](https://github.com/qarq90/image-innator/assets/124421417/7d7b5a7d-4803-41da-ba0e-f602e23cc5c6)
-
-
+<br>
+<br>
+![image](https://github.com/qarq90/image-innator/assets/124421417/0fca5b48-aacc-4eea-b23e-0eb9f3a036c6)
+<br>
+<br>
 ![image](https://github.com/qarq90/qarq90/assets/124421417/6002b906-d1e5-4c98-954e-650de270936c)
-
-
+<br>
+<br>
 ## Installing the Project
 
 To install the project, you need to run the provided installer executable. Here are the steps:
