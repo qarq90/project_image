@@ -16,7 +16,7 @@ export const DownloadButton = ({name, url, theme}) => {
     const downloadHandler = () => {
         if (selectedResolution) {
             const selectedUrl = selectedResolution.urlType;
-            handleDownload(selectedUrl, selectedResolution.name + "-" + name);
+            console.log(handleDownload(selectedUrl, selectedResolution.name + "-" + name).then(r => console.log(r)))
         } else {
             console.error('Please select an image resolution.');
         }
