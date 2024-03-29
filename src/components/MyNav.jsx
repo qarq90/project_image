@@ -20,7 +20,7 @@ import {
     StyledTitle,
     StyledUl
 } from "../styles/styledComp"
-import {randomImages, searchImages} from '../lib/helper';
+import {randomImages, searchImages} from '../lib/helper'
 
 const MyNav = () => {
     const [theme, setTheme] = useState(true)
@@ -82,16 +82,16 @@ const MyNav = () => {
     useEffect(() => {
         const fetchOnLoad = async () => {
             try {
-                let randomizedImages = await randomImages();
-                setImages(randomizedImages);
+                let randomizedImages = await randomImages()
+                setImages(randomizedImages)
             } catch (error) {
-                console.error('Error fetching and setting images:', error);
+                console.error('Error fetching and setting images:', error)
             }
-        };
+        }
         fetchOnLoad().then(r => {
             console.log(r)
-        });
-    }, []);
+        })
+    }, [])
 
     return (
         <StyledMyNav className={theme ? "darkMode" : "lightMode"}>

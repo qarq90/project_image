@@ -1,7 +1,7 @@
 import React from "react";
-import { scaleUp } from "./Animations";
-import { DownloadButton } from "./Button";
 import { Image } from "./Image";
+import { DownloadButton } from "./Button";
+import { scaleUp } from "./Animations";
 import { StyledGrid, StyledMapDiv, StyledSearched } from "../styles/styledComp";
 
 export const Randoms = ({ images, theme }) => {

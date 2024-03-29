@@ -1,7 +1,7 @@
-import {handleDownload} from "../lib/helper";
 import React, {useState} from "react";
 import styled from "styled-components";
 import {StyledButton, StyledSelect} from "../styles/styledComp";
+import {handleDownload} from "../lib/helper";
 
 
 export const DownloadButton = ({name, url, theme}) => {

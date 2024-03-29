@@ -166,10 +166,10 @@ export const StyledBottomButton = styled.a`
         scale: 0.95;
         cursor: pointer;
     }
-    
-  @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    width: 90%;
-  }
+
+    @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+        width: 90%;
+    }
 `;
 
 export const StyledSelect = styled.select`
