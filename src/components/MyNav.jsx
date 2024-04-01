@@ -26,7 +26,7 @@ import {LimitReached} from "./LimitReached";
 const MyNav = () => {
     const [theme, setTheme] = useState(true)
     const [title, setTitle] = useState(false)
-    const [limit, setLimit] = useState(true)
+    const [limit, setLimit] = useState(false)
     const [images, setImages] = useState([])
     const [inputValue, setInputValue] = useState("")
 
