@@ -72,6 +72,7 @@ const MyNav = () => {
                     setImages([])
                     setImages(prevImages => [...prevImages, ...randomizedImages])
                     setTitle(false)
+                    setInputValue("")
                 } else {
                     setLimit(false)
                 }
