@@ -3,8 +3,6 @@ import "../styles/global.css"
 import navLogo from "../img/gallery.png"
 import {FaBackspace, FaMoon, FaRandom, FaSearch, FaSun} from "react-icons/fa"
 import {hover} from "./Animations"
-import {Searched} from "./Searched"
-import {Randoms} from "./Randoms"
 import {
     StyledBottom,
     StyledBottomButton,
@@ -21,10 +19,14 @@ import {
     StyledUl
 } from "../styles/styledComp"
 import {randomImages, searchImages} from '../lib/helper'
+import {Searched} from "./Searched";
+import {Randoms} from "./Randoms";
+import {LimitReached} from "./LimitReached";
 
 const MyNav = () => {
     const [theme, setTheme] = useState(true)
     const [title, setTitle] = useState(false)
+    const [limit, setLimit] = useState(true)
     const [images, setImages] = useState([])
     const [inputValue, setInputValue] = useState("")
 
@@ -56,22 +58,31 @@ const MyNav = () => {
         switch (type) {
             case "searched":
                 let searchedImages = await searchImages(inputValue)
-                setImages([])
-                setImages(searchedImages)
-                setTitle(true)
-                console.log(title)
+                if (searchedImages) {
+                    setImages([])
+                    setImages(searchedImages)
+                    setTitle(true)
+                } else {
+                    setLimit(false)
+                }
                 break
             case "random":
                 let randomizedImages = await randomImages()
-                setImages([])
-                setImages(prevImages => [...prevImages, ...randomizedImages])
-                setTitle(false)
-                console.log(title)
+                if (randomizedImages) {
+                    setImages([])
+                    setImages(prevImages => [...prevImages, ...randomizedImages])
+                    setTitle(false)
+                } else {
+                    setLimit(false)
+                }
                 break
             case "loadMore":
                 let moreImages = title ? await searchImages(inputValue) : await randomImages()
-                setImages(prevImages => [...prevImages, ...moreImages])
-                console.log(moreImages)
+                if (moreImages) {
+                    setImages(prevImages => [...prevImages, ...moreImages])
+                } else {
+                    setLimit(true)
+                }
                 break
             default:
                 console.log("Invalid value for type")
@@ -83,7 +94,11 @@ const MyNav = () => {
         const fetchOnLoad = async () => {
             try {
                 let randomizedImages = await randomImages()
-                setImages(randomizedImages)
+                if (randomizedImages) {
+                    setImages(randomizedImages)
+                } else {
+                    setLimit(true)
+                }
             } catch (error) {
                 console.error('Error fetching and setting images:', error)
             }
@@ -157,19 +172,26 @@ const MyNav = () => {
                     </StyledNavRight>
                 </StyledUl>
             </StyledNav>
-            {title ? (
-                <Searched images={images} theme={theme}/>
+            {!limit ? (
+                <>
+                    {title ? (
+                        <Searched images={images} theme={theme}/>
+                    ) : (
+                        <Randoms images={images} theme={theme}/>
+                    )}
+                </>
             ) : (
-                <Randoms images={images} theme={theme}/>
+                <LimitReached/>
             )}
-            <StyledBottom>
-                <StyledBottomButton
-                    className={`${theme ? "darkButton" : "lightButton"}`}
-                    onClick={() => fetchImages("loadMore")}
-                >
-                    Load More
-                </StyledBottomButton>
-            </StyledBottom>
+            {limit ? (<></>) : <>
+                <StyledBottom>
+                    <StyledBottomButton
+                        className={`${theme ? "darkButton" : "lightButton"}`}
+                        onClick={() => fetchImages("loadMore")}
+                    >
+                        Load More
+                    </StyledBottomButton>
+                </StyledBottom></>}
         </StyledMyNav>
     )
 }

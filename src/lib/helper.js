@@ -34,7 +34,7 @@ export const searchImages = async (inputValue) => {
         searchCount++
         return response.data.results
     } catch (error) {
-        console.error("Error fetching images:", error)
+        return false;
     }
 }
 
@@ -45,6 +45,6 @@ export const randomImages = async () => {
         console.log(response.data)
         return response.data
     } catch (error) {
-        console.error("Error fetching images:", error)
+        return false;
     }
 }
