@@ -27,8 +27,9 @@ body {
 
 .darkMode #search {
     &:focus {
-        background-color: #a67b5b;
-        color: #000;
+        box-shadow: 4px 4px 4px 0 rgba(10, 10, 10, 1);
+        background-color: #111111;
+        color: #a67b5b;
     }
 }
 

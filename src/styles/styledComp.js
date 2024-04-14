@@ -14,6 +14,7 @@ export const StyledNav = styled.nav``;
 
 export const StyledTitle = styled.h1`
   font-size: 2rem;
+    text-shadow: 5px 5px 0 #2f2f2f;
 `;
 
 export const StyledUl = styled.ul`
@@ -31,10 +32,10 @@ export const StyledUl = styled.ul`
 `;
 
 export const StyledLi = styled.li`
-  padding: 0.5rem;
-  @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    width: 105%;
-  }
+    padding: 0.5rem;
+    @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+        width: 105%;
+    }
 `;
 
 export const StyledNavLeft = styled.div`
@@ -69,25 +70,26 @@ export const StyledIconDiv = styled.div`
 `;
 
 export const StyledLiIcon = styled(motion.div)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid #a67b5b;
-  border-radius: 10px;
-  padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 4px 4px 4px 0 rgba(10, 10, 10, 1);
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    padding: 0.5rem;
 
-  &:hover {
-    cursor: pointer;
-  }
-
-  @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    > svg {
-      margin: 0.005rem;
-      padding: 0.35rem;
-      width: 50%;
-      height: 50%;
+    &:hover {
+        cursor: pointer;
     }
-  }
+
+    @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+        > svg {
+            margin: 0.005rem;
+            padding: 0.35rem;
+            width: 50%;
+            height: 50%;
+        }
+    }
 `;
 
 export const StyledImg = styled.img`
@@ -99,26 +101,28 @@ export const StyledImg = styled.img`
 `;
 
 export const StyledInput = styled.input`
-  width: 30rem;
-  padding: 0.5rem;
-  font-size: 1.5rem;
-  border: #a67b5b solid 2px;
-  color: #a67b5b;
-  font-weight: normal;
-  border-radius: 10px;
+    width: 30rem;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    box-shadow: 4px 4px 4px 0 rgba(10, 10, 10, 1);
+    background-color: #1f1f1f;
+    border: none;
+    font-weight: normal;
+    border-radius: 10px;
+    color: #a67b5b;
 
-  &:hover {
-    cursor: pointer;
-  }
+    &:hover {
+        cursor: pointer;
+    }
 
-  &:focus {
-    outline: none;
-  }
+    &:focus {
+        outline: none;
+    }
 
-  @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    width: 95%;
-    text-align: center;
-  }
+    @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+        width: 95%;
+        text-align: center;
+    }
 `;
 
 export const StyledGrid = styled(motion.div)`
@@ -160,9 +164,13 @@ export const StyledBottomButton = styled.a`
     font-size: 1rem;
     cursor: pointer;
     transition: 0.5s all ease;
+    box-shadow: 4px 4px 4px 0 rgba(10, 10, 10, 1);
+    background-color: #2f2f2f;
+    color: #a67b5b;
 
     &:hover {
-        border: 1px solid black;
+        background-color: #a67b5b;
+        color: #2f2f2f;
         scale: 0.95;
         cursor: pointer;
     }
@@ -173,36 +181,44 @@ export const StyledBottomButton = styled.a`
 `;
 
 export const StyledSelect = styled.select`
-  margin-top: 1rem;
-  text-align: center;
-  padding: 0.5rem;
-  border-radius: 5px;
-  border: none;
-  font-family: sans-serif;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: 0.5s all ease;
-
-  &:hover {
-    border: 1px solid black;
+    margin-top: 1rem;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: none;
+    font-family: sans-serif;
+    font-size: 1rem;
     cursor: pointer;
-  }
+    transition: 0.5s all ease;
+    box-shadow: 4px 4px 4px 0 rgba(10, 10, 10, 1);
+    background-color: #2f2f2f;
+    color: #a67b5b;
+
+    &:focus {
+        background-color: #a67b5b;
+        color: #2f2f2f;
+        cursor: pointer;
+    }
 
 `;
 
 export const StyledButton = styled.a`
-  margin-top: 1rem;
-  padding: 0.5rem;
-  border-radius: 5px;
-  border: none;
-  font-family: sans-serif;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: 0.5s all ease;
-
-  &:hover {
-    border: 1px solid black;
-    scale: 0.95;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: none;
+    font-family: sans-serif;
+    font-size: 1rem;
     cursor: pointer;
-  }
+    transition: 0.5s all ease;
+    box-shadow: 4px 4px 4px 0 rgba(10, 10, 10, 1);
+    background-color: #2f2f2f;
+    color: #a67b5b;
+
+    &:hover {
+        background-color: #a67b5b;
+        color: #2f2f2f;
+        scale: 0.95;
+        cursor: pointer;
+    }
 `;

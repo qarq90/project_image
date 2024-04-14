@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react"
 import "../styles/global.css"
 import navLogo from "../img/gallery.png"
-import {FaBackspace, FaMoon, FaRandom, FaSearch, FaSun} from "react-icons/fa"
+import {FaBackspace, FaRandom, FaSearch} from "react-icons/fa"
 import {hover} from "./Animations"
 import {
     StyledBottom,
@@ -33,10 +33,6 @@ const MyNav = () => {
     const handleInputChange = (event) => {
         setTitle(true)
         setInputValue(event.target.value)
-    }
-
-    const themeHandler = () => {
-        setTheme(!theme)
     }
 
     const clearHandler = () => {
@@ -158,15 +154,6 @@ const MyNav = () => {
                                     whileHover="whileHover"
                                 >
                                     <FaRandom size={30}/>
-                                </StyledLiIcon>
-                            </StyledLi>
-                            <StyledLi>
-                                <StyledLiIcon
-                                    onClick={themeHandler}
-                                    variants={hover}
-                                    whileHover="whileHover"
-                                >
-                                    {theme ? <FaMoon size={30}/> : <FaSun size={30}/>}
                                 </StyledLiIcon>
                             </StyledLi>
                         </StyledIconDiv>

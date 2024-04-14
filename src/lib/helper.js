@@ -42,7 +42,6 @@ export const randomImages = async () => {
     try {
         const response = await axios.get(`https://api.unsplash.com/photos/random?count=6&page=${searchCount}&client_id=${clientID}`)
         searchCount++
-        console.log(response.data)
         return response.data
     } catch (error) {
         return false;
