@@ -5,7 +5,7 @@ export const StyledMyNav = styled.div`
   width: 100%;
   position: sticky;
   top: 0;
-  color: #a67b5b;
+  color: var(--primary-color);
   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
   }
 `;
@@ -14,7 +14,7 @@ export const StyledNav = styled.nav``;
 
 export const StyledTitle = styled.h1`
   font-size: 2rem;
-    text-shadow: 5px 5px 0 #2f2f2f;
+    text-shadow: 5px 5px 0 var(--secondary-color);
 `;
 
 export const StyledUl = styled.ul`
@@ -165,12 +165,12 @@ export const StyledBottomButton = styled.a`
     cursor: pointer;
     transition: 0.5s all ease;
     box-shadow: 4px 4px 4px 0 rgba(10, 10, 10, 1);
-    background-color: #2f2f2f;
+    background-color: var(--secondary-color);
     color: #a67b5b;
 
     &:hover {
         background-color: #a67b5b;
-        color: #2f2f2f;
+        color: var(--secondary-color);
         scale: 0.95;
         cursor: pointer;
     }
@@ -191,13 +191,16 @@ export const StyledSelect = styled.select`
     cursor: pointer;
     transition: 0.5s all ease;
     box-shadow: 4px 4px 4px 0 rgba(10, 10, 10, 1);
-    background-color: #2f2f2f;
+    background-color: var(--secondary-color);
     color: #a67b5b;
+
+    &:hover {
+        cursor: pointer;
+    }
 
     &:focus {
         background-color: #a67b5b;
-        color: #2f2f2f;
-        cursor: pointer;
+        color: var(--secondary-color);
     }
 
 `;
@@ -212,12 +215,12 @@ export const StyledButton = styled.a`
     cursor: pointer;
     transition: 0.5s all ease;
     box-shadow: 4px 4px 4px 0 rgba(10, 10, 10, 1);
-    background-color: #2f2f2f;
+    background-color: var(--secondary-color);
     color: #a67b5b;
 
     &:hover {
         background-color: #a67b5b;
-        color: #2f2f2f;
+        color: var(--secondary-color);
         scale: 0.95;
         cursor: pointer;
     }

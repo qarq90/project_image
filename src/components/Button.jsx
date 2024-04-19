@@ -43,4 +43,9 @@ export const DownloadButton = ({name, url, theme}) => {
     )
 }
 
-const StyledOption = styled.option``
+const StyledOption = styled.option`
+    cursor: pointer;
+    background-color: #a67b5b;
+    color: var(--secondary-color);
+    cursor: pointer;
+`
